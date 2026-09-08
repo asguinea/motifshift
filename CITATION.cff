@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use MotifShift, please cite this software and record the version or commit used."
+type: software
+title: "MotifShift: Synthetic representation and transfer diagnostics"
+version: 0.1.0
+repository-code: "https://github.com/asguinea/motifshift"
+url: "https://github.com/asguinea/motifshift"
+authors:
+  - family-names: "Sánchez Guinea"
+    given-names: "Alejandro"
+license: Apache-2.0
+abstract: >-
+  Reproducible synthetic diagnostics for token recurrence, distribution shift,
+  sequence recombination, and cross-context predictive transfer across trajectories,
+  gridworld replay, and scalar physical fields.
+keywords:
+  - representation learning
+  - synthetic data
+  - transfer learning
+  - reproducibility

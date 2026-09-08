@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "motifshift"
+dynamic = ["version"]
+description = "Synthetic representation diagnostics and cross-context transfer experiments"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{name = "Alejandro Sánchez Guinea"}]
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.0,<3", "PyYAML>=6,<7", "matplotlib>=3.9,<4"]
+keywords = ["representation-learning", "reproducibility", "synthetic-data", "transfer-learning"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Repository = "https://github.com/asguinea/motifshift"
+Issues = "https://github.com/asguinea/motifshift/issues"
+Documentation = "https://github.com/asguinea/motifshift/blob/main/README.md"
+
+[project.scripts]
+motifshift = "motifshift.run_all:main"
+motifshift-verify = "motifshift.verify_outputs:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "build>=1.2,<2", "hatchling==1.27.0"]
+
+[tool.hatch.version]
+path = "motifshift/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["motifshift"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/motifshift", "/tests", "/configs", "/docs", "/README.md", "/LICENSE", "/NOTICE", "/CITATION.cff", "/CONTRIBUTING.md", "/pyproject.toml", "/uv.lock", "/requirements.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"motifshift/reporting/figures.py" = ["E402"]
+
+[tool.coverage.run]
+source = ["motifshift"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

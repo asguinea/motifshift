@@ -1,0 +1,68 @@
+experiment:
+  name: quick
+  seed: 123
+  smoke: false
+runtime:
+  verbose: true
+robustness:
+  enabled: false
+  seeds:
+  - 123
+  - 456
+spatiotemporal:
+  enabled: true
+  synthetic:
+    n_scenes: 2
+    agents_per_scene: 4
+    timesteps: 6
+    noise_std: 0.02
+    speed_variation: 0.2
+    scene_variation: 0.25
+  diagnostics:
+    enabled: true
+    top_ks:
+    - 5
+    - 10
+    top_k_jaccard: 5
+  transfer:
+    enabled: true
+    horizon: 1
+    k_neighbors: 2
+rl:
+  enabled: true
+  synthetic:
+    n_layouts: 2
+    width: 6
+    height: 6
+    episodes_per_world: 3
+    max_steps: 15
+    noise_prob: 0.1
+  diagnostics:
+    enabled: true
+    top_ks:
+    - 5
+    - 10
+    top_k_jaccard: 5
+  transfer:
+    enabled: true
+physical_field:
+  enabled: true
+  synthetic:
+    n_environments: 2
+    grid_size: 8
+    timesteps: 5
+    noise_std: 0.01
+  diagnostics:
+    enabled: true
+    top_ks:
+    - 5
+    - 10
+    top_k_jaccard: 5
+  transfer:
+    enabled: true
+outputs:
+  root: outputs/quick
+  reports_dir: reports
+  tables_dir: tables
+  figures_dir: figures
+  data_dir: data

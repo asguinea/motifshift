@@ -1,0 +1,66 @@
+experiment:
+  name: default
+  seed: 123
+  smoke: false
+
+outputs:
+  root: outputs/default
+  reports_dir: reports
+  tables_dir: tables
+  figures_dir: figures
+  data_dir: data
+
+runtime:
+  verbose: true
+
+spatiotemporal:
+  enabled: true
+  synthetic:
+    n_scenes: 6
+    agents_per_scene: 30
+    timesteps: 40
+    noise_std: 0.03
+    speed_variation: 0.25
+    scene_variation: 0.35
+  diagnostics:
+    enabled: true
+    top_ks: [10, 50, 100]
+    top_k_jaccard: 50
+  transfer:
+    enabled: true
+    horizon: 1
+    k_neighbors: 5
+
+rl:
+  enabled: true
+  synthetic:
+    n_layouts: 5
+    width: 12
+    height: 12
+    episodes_per_world: 30
+    max_steps: 50
+    noise_prob: 0.15
+  diagnostics:
+    enabled: true
+    top_ks: [10, 50, 100]
+    top_k_jaccard: 50
+  transfer:
+    enabled: true
+
+physical_field:
+  enabled: true
+  synthetic:
+    n_environments: 5
+    grid_size: 24
+    timesteps: 30
+    noise_std: 0.01
+  diagnostics:
+    enabled: true
+    top_ks: [10, 50, 100]
+    top_k_jaccard: 50
+  transfer:
+    enabled: true
+
+robustness:
+  enabled: false
+  seeds: [123, 456, 789, 101112, 131415]

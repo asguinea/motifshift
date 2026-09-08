@@ -1,0 +1,66 @@
+experiment:
+  name: smoke
+  seed: 123
+  smoke: true
+
+outputs:
+  root: outputs/smoke
+  reports_dir: reports
+  tables_dir: tables
+  figures_dir: figures
+  data_dir: data
+
+runtime:
+  verbose: true
+
+spatiotemporal:
+  enabled: false
+  synthetic:
+    n_scenes: 3
+    agents_per_scene: 5
+    timesteps: 10
+    noise_std: 0.03
+    speed_variation: 0.25
+    scene_variation: 0.35
+  diagnostics:
+    enabled: true
+    top_ks: [10, 50]
+    top_k_jaccard: 10
+  transfer:
+    enabled: true
+    horizon: 1
+    k_neighbors: 5
+
+rl:
+  enabled: false
+  synthetic:
+    n_layouts: 3
+    width: 8
+    height: 8
+    episodes_per_world: 5
+    max_steps: 25
+    noise_prob: 0.1
+  diagnostics:
+    enabled: true
+    top_ks: [10, 50]
+    top_k_jaccard: 10
+  transfer:
+    enabled: true
+
+physical_field:
+  enabled: false
+  synthetic:
+    n_environments: 3
+    grid_size: 12
+    timesteps: 10
+    noise_std: 0.01
+  diagnostics:
+    enabled: true
+    top_ks: [10, 50]
+    top_k_jaccard: 10
+  transfer:
+    enabled: true
+
+robustness:
+  enabled: false
+  seeds: [123, 456]
